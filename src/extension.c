@@ -10,16 +10,8 @@
 #include <Shobjidl.h>
 #include <Shlobj.h>
 
-typedef uintmax_t uint;
-typedef intmax_t sint;
-typedef USHORT u16;
-typedef unsigned char u8;
-
 //#define ODS(x) OutputDebugStringW(x)
 #define ODS(x) (void)0
-
-#define COM_CALL(x, y, ...) x->lpVtbl->y(x, __VA_ARGS__)
-#define COM_CALL0(x, y) x->lpVtbl->y(x)
 
 /* GLOBALS */
 #include "common.c"
