@@ -11,6 +11,7 @@
 #include "common.c"
 
 #include "custom-open-with.h"
+#include "shell-link.h"
 
 static void display_error(DWORD error){
     u16* reason = NULL;
@@ -225,8 +226,13 @@ static u16 processFullPath[MAX_UNICODE_PATH_LENGTH + 1] = {0};
 static uint processFullPathLength = 0;
 void entry_point(){
     custom_open_with(NULL, L"Title", params, pathToOpener, &saveConfig);
+    if (saveConfig){
+        ShellLink_CreateAndStore(pathToOpener, params, L"c:\\tmp\\baz.lnk");
+        ShellLink_CreateAndStore(pathToOpener, params, L"c:\\tmp\\foo\\bar\\baz.lnk");
+    }
     ExitProcess(0);
     return;
+
     processFullPathLength = GetModuleFileNameW(NULL, processFullPath, MAX_UNICODE_PATH_LENGTH);
     if (processFullPathLength == 0){
         display_last_error();
