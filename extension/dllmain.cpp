@@ -1,4 +1,4 @@
-﻿#include <Windows.h>
+#include <Windows.h>
 #include <GuidDef.h>
 #include <Shobjidl.h>
 #include <Shlobj.h>
